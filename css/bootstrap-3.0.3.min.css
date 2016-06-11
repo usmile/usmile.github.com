@@ -6758,3 +6758,38 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+h1,
+.h1 {
+  font-weight: bold;
+  font-size: 24px;
+}
+h2,
+.h2 {
+  font-weight: bold;
+  font-size: 20px;
+}
+h3,
+.h3 {
+  font-weight: bold;
+  font-size: 16px;
+}
+h4,
+.h4 {
+  font-size: 14px;
+}
+h5,
+.h5 {
+  font-weight: bold;
+  font-size: 12px;
+}
+h6,
+.h6 {
+  font-weight: bold;
+  font-size: 10px;
+}
+p,
+.p {
+  font-family: serif;
+  font-size: 10;
+}

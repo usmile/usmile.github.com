@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+   <script id="dsq-count-scr" src="//wangsd.disqus.com/count.js" async></script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,10 +65,6 @@
                             <a href="../git_commands/">Git commands</a>
                         </li>
                     
-                        <li >
-                            <a href="../mkdocs_usage/">Mkdocs usage</a>
-                        </li>
-                    
                         <li class="active">
                             <a href="./">Python notes</a>
                         </li>
@@ -94,7 +91,7 @@
                         </li>
                     
                         <li >
-                            <a href="../../translate/%E4%BA%92%E8%81%94%E7%BD%91%E7%B3%BB%E7%BB%9F%E6%97%A0%E7%AD%89%E5%BE%85%E5%8D%8F%E8%B0%83%E6%9C%8D%E5%8A%A1zookeeper/">互联网系统无等待协调服务zookeeper</a>
+                            <a href="../../translate/zookeeper_paper/">Zookeeper paper</a>
                         </li>
                     
                     </ul>
@@ -112,7 +109,7 @@
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
                 <li >
-                    <a rel="next" href="../mkdocs_usage/">
+                    <a rel="next" href="../git_commands/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
@@ -131,22 +128,106 @@
             <!-- <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#_1">错误、调试和测试</a></li>
+        <li class="main active"><a href="#_1">基础语法</a></li>
         
-            <li><a href="#_2">错误处理</a></li>
+    
+        <li class="main "><a href="#python">python库</a></li>
         
-            <li><a href="#_7">调试</a></li>
+            <li><a href="#_2">字符串操作库</a></li>
         
-            <li><a href="#_10">单元测试</a></li>
+            <li><a href="#_3">文件操作</a></li>
+        
+            <li><a href="#_5">网络</a></li>
+        
+            <li><a href="#_6">其它</a></li>
+        
+    
+        <li class="main "><a href="#_7">错误、调试和测试</a></li>
+        
+            <li><a href="#_8">错误处理</a></li>
+        
+            <li><a href="#_13">调试</a></li>
+        
+            <li><a href="#_16">单元测试</a></li>
         
     
     </ul>
 </div></div> -->
             <div class="col-md-9" role="main">
 
-<h1 id="_1">错误、调试和测试</h1>
+<h1 id="_1">基础语法</h1>
+<h1 id="python">python库</h1>
+<h2 id="_2">字符串操作库</h2>
+<h3 id="re">re: 正则表达式</h3>
+<h2 id="_3">文件操作</h2>
+<h3 id="glob">glob: 查找文件</h3>
+<ul>
+<li><code>glob.glob("/usr/lib/*.so")</code>: 查找所有的/usr/lib路径下的所有以.so结尾的文件</li>
+</ul>
+<h3 id="ospath">os.path: 路径操作</h3>
+<ul>
+<li><code>os.path.abspath("./")</code>: 获取绝对路径 /root/github/blog</li>
+<li><code>os.path.basename("./readme.md")</code>: 获得文件名 readme.md</li>
+<li><code>os.path.exists(path)</code>: 判断是否文件或路径是否存在</li>
+<li><code>os.path.dirname("/root/readme.md")</code>: 获取路径名 /root</li>
+<li><code>os.path.splitext("/root/readme.md")</code>: 获得('/root/readme', '.md')格式</li>
+</ul>
+<h3 id="codecs">codecs: 编码</h3>
+<ul>
+<li><code>codecs.open(file, "r", "utf-8")</code>: 以utf-8格式打开文件</li>
+</ul>
+<h3 id="_4">遍历所有目录/文件</h3>
+<p>自己写了两个小函数 <a href="https://github.com/usmile/programs/blob/master/os_walk.py"><code>os_walk.py</code></a>。</p>
+<ul>
+<li><code>file_list(path, [".py", ".c"])</code></li>
+<li><code>dir_list(path)</code></li>
+</ul>
+<pre><code class="python"># 遍历目录下的所有文件
+for path in file_list(path):
+    print(path)
+
+# 遍历目录下的所有目录
+for path in dir_list(path):
+    print(path)
+</code></pre>
+
+<h2 id="_5">网络</h2>
+<h3 id="web">web框架</h3>
+<ul>
+<li>tornado: 是一个使用<code>epoll</code>多路复用web框架，由facebook开发，知乎使用该框架做基础。</li>
+<li>django: 是一个大而全的开箱即用的库。</li>
+<li>flask: 是一个微框架，提供了核心，然后可以极大扩展。</li>
+<li>web.py: 轻量级的框架。</li>
+</ul>
+<h2 id="_6">其它</h2>
+<h3 id="logging">logging: 日志打印</h3>
+<pre><code class="python">import logging
+
+# 打印级别为INFO
+logging.basicConfig(level=logging.INFO)
+
+# 打印日志
+logging.error(&quot;msg&quot;)
+logging.warn(&quot;msg&quot;)
+</code></pre>
+
+<h3 id="pil">PIL: 图像处理标准库</h3>
+<ul>
+<li><code>pip install pillow</code>: python3下安装方法</li>
+<li>缩放图像</li>
+</ul>
+<pre><code class="python">from PIL import Image
+
+im = Image.open('image.jpg')
+w, h = im.size
+
+im.thumbnail((w//2, h//2))  # 缩放到50%
+im.save('image.jpg', 'jpeg')
+</code></pre>
+
+<h1 id="_7">错误、调试和测试</h1>
 <p>在程序运行过程中，总会遇到各种各样的错误。有的错误是程序编写有问题造成的，比如本来应该输出整数结果输出了字符串，这种错误我们通常称之为bug，bug是必须修复的。有的错误是用户输入造成的，比如让用户输入email地址，结果得到一个空字符串，这种错误可以通过检查用户输入来做相应的处理。还有一类错误是完全无法在程序运行过程中预测的，比如写入文件的时候，磁盘满了，写不进去了，或者从网络抓取数据，网络突然断掉了。这类错误也称为异常，在程序中通常是必须处理的，否则，程序会因为各种问题终止并退出。Python内置了一套异常处理机制，来帮助我们进行错误处理。此外，我们也需要跟踪程序的执行，查看变量的值是否正确，这个过程称为调试。Python的pdb可以让我们以单步方式执行代码。最后，编写测试也很重要。有了良好的测试，就可以在程序修改后反复运行，确保程序输出符合我们编写的测试。</p>
-<h2 id="_2">错误处理</h2>
+<h2 id="_8">错误处理</h2>
 <p>在程序运行的过程中，如果发生了错误，可以事先约定返回一个错误代码，这样，就可以知道是否有错，以及出错的原因。在操作系统提供的调用中，返回错误码非常常见。比如打开文件的函数open()，成功时返回文件描述符（就是一个整数），出错时返回-1。</p>
 <p>用错误码来表示是否出错十分不便，因为函数本身应该返回的正常结果和错误码混在一起，造成调用者必须用大量的代码来判断是否出错：</p>
 <pre><code class="python">def foo():
@@ -256,7 +337,7 @@ def main():
 </code></pre>
 
 <p>也就是说，不需要在每个可能出错的地方去捕获错误，只要在合适的层次去捕获错误就可以了。这样一来，就大大减少了写try...except...finally的麻烦。</p>
-<h3 id="_3">调用堆栈</h3>
+<h3 id="_9">调用堆栈</h3>
 <p>如果错误没有被捕获，它就会一直往上抛，最后被Python解释器捕获，打印一个错误信息，然后程序退出。来看看err.py：</p>
 <pre><code class="python"># err.py:
 def foo(s):
@@ -284,7 +365,7 @@ main()
 ZeroDivisionError: division by zero
 </code></pre>
 
-<h3 id="_4">记录错误</h3>
+<h3 id="_10">记录错误</h3>
 <p>捕获异常，然后把错误堆栈打印出来，同时让程序继续。使用<code>logging</code>模块可以非常容易地记录错误信息：</p>
 <pre><code class="python"># err_logging.py
 
@@ -307,7 +388,7 @@ print('END')
 </code></pre>
 
 <p>通过配置，logging还可以把错误记录到日志文件里，方便事后排查。</p>
-<h3 id="_5">抛出错误</h3>
+<h3 id="_11">抛出错误</h3>
 <p>因为错误是class，捕获一个错误就是捕获到该class的一个实例。因此，错误并不是凭空产生的，而是有意创建并抛出的。Python的内置函数会抛出很多类型的错误，我们自己编写的函数也可以抛出错误。</p>
 <p>如果要抛出错误，首先根据需要，可以定义一个错误的class，选择好继承关系，然后，用raise语句抛出一个错误的实例：</p>
 <pre><code class="python"># err_raise.py
@@ -363,10 +444,10 @@ except ZeroDivisionError:
 </code></pre>
 
 <p>只要是合理的转换逻辑就可以，但是，决不应该把一个IOError转换成毫不相干的ValueError。</p>
-<h3 id="_6">小结</h3>
+<h3 id="_12">小结</h3>
 <p>Python内置的<code>try...except...finally</code>用来处理错误十分方便。出错时，会分析错误信息并定位错误发生的代码位置才是最关键的。</p>
 <p>程序也可以主动抛出错误，让调用者来处理相应的错误。但是，应该在文档中写清楚可能会抛出哪些错误，以及错误产生的原因。</p>
-<h2 id="_7">调试</h2>
+<h2 id="_13">调试</h2>
 <p>程序能一次写完并正常运行的概率很小，基本不超过1%。总会有各种各样的bug需要修正。有的bug很简单，看看错误信息就知道，有的bug很复杂，我们需要知道出错时，哪些变量的值是正确的，哪些变量的值是错误的，因此，需要一整套调试程序的手段来修复bug。</p>
 <p>第一种方法简单直接粗暴有效，就是用print()把可能有问题的变量打印出来看看：</p>
 <pre><code class="python">def foo(s):
@@ -389,7 +470,7 @@ ZeroDivisionError: integer division or modulo by zero
 </code></pre>
 
 <p>用print()最大的坏处是将来还得删掉它，想想程序里到处都是print()，运行结果也会包含很多垃圾信息。所以，我们又有第二种方法。</p>
-<h3 id="_8">断言</h3>
+<h3 id="_14">断言</h3>
 <p>凡是用print()来辅助查看的地方，都可以用断言（assert）来替代：</p>
 <pre><code class="python">def foo(s):
     n = int(s)
@@ -422,7 +503,7 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 </code></pre>
 
-<h3 id="logging">logging</h3>
+<h3 id="logging_1">logging</h3>
 <p>把print()替换为logging是第3种方式，和assert比，logging不会抛出错误，而且可以输出到文件：</p>
 <pre><code class="python">import logging
 logging.basicConfig(level=logging.INFO)
@@ -451,10 +532,10 @@ print(10 / n)
 
 <h3 id="ide">IDE</h3>
 <p>如果要比较爽地设置断点、单步执行，就需要一个支持调试功能的IDE。目前比较好的Python IDE有<a href="http://www.jetbrains.com/pycharm/">PyCharm</a>，Eclipse插件Pydev。</p>
-<h3 id="_9">小结</h3>
+<h3 id="_15">小结</h3>
 <p>写程序最痛苦的事情莫过于调试，程序往往会以你意想不到的流程来运行，你期待执行的语句其实根本没有执行，这时候，就需要调试了。</p>
 <p>虽然用IDE调试起来比较方便，但是最后你会发现，logging才是终极武器。</p>
-<h2 id="_10">单元测试</h2>
+<h2 id="_16">单元测试</h2>
 <p>单元测试</p>
 <p>如果你听说过“测试驱动开发”（TDD：Test-Driven Development），单元测试就不陌生。 单元测试是用来对一个模块、一个函数或者一个类来进行正确性检验的测试工作。 比如对函数abs()，我们可以编写出以下几个测试用例：</p>
 <ol>
@@ -524,7 +605,7 @@ class TestDict(unittest.TestCase):
 
 <p>编写单元测试时，我们需要编写一个测试类，从unittest.TestCase继承。 以test开头的方法就是测试方法，不以test开头的方法不被认为是测试方法，测试的时候不会被执行。</p>
 <p>对每一类测试都需要编写一个test_xxx()方法。由于unittest.TestCase提供了很多内置的条件判断，我们只需要调用这些方法就可以断言输出是否是我们所期望的。最常用的断言就是assertEqual()。</p>
-<h3 id="_11">运行单元测试</h3>
+<h3 id="_17">运行单元测试</h3>
 <p>使用函数运行</p>
 <pre><code class="python">if __name__ == '__main__':
     unittest.main()
@@ -548,12 +629,27 @@ class TestDict(unittest.TestCase):
 </code></pre>
 
 <p>可以再次运行测试看看每个测试方法调用前后是否会打印出setUp...和tearDown...。</p>
-<h3 id="_12">小结</h3>
+<h3 id="_18">小结</h3>
 <p>单元测试可以有效地测试某个程序模块的行为，是未来重构代码的信心保证。</p>
 <p>单元测试的测试用例要覆盖常用的输入组合、边界条件和异常。</p>
 <p>单元测试代码要非常简单，如果测试代码太复杂，那么测试代码本身就可能有bug。</p>
 <p>单元测试通过了并不意味着程序就没有bug了，但是不通过程序肯定有bug。</p></div>
         </div>
+
+
+<div id="disqus_thread"></div>
+<script>
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//wangsd.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
 
 	<footer class="col-md-12">
 		<hr>
