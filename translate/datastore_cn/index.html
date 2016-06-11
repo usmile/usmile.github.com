@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Datastore cn - github blog</title>
+
+        <link href="../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">github blog</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">首页</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">笔记 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../notes/git_commands/">Git commands</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../notes/python_notes/">Python notes</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">翻译 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li class="active">
+                            <a href="./">Datastore cn</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../%E4%BA%92%E8%81%94%E7%BD%91%E7%B3%BB%E7%BB%9F%E6%97%A0%E7%AD%89%E5%BE%85%E5%8D%8F%E8%B0%83%E6%9C%8D%E5%8A%A1zookeeper/">互联网系统无等待协调服务zookeeper</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../about/">关于</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../../notes/python_notes/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../%E4%BA%92%E8%81%94%E7%BD%91%E7%B3%BB%E7%BB%9F%E6%97%A0%E7%AD%89%E5%BE%85%E5%8D%8F%E8%B0%83%E6%9C%8D%E5%8A%A1zookeeper/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#dbdb-dog-bed-database">DBDB: Dog Bed Database</a></li>
+        
+            <li><a href="#_1">简介</a></li>
+        
+            <li><a href="#_2">回忆</a></li>
+        
+            <li><a href="#_3">为什么很有意义</a></li>
+        
+            <li><a href="#_4">描述故障</a></li>
+        
+            <li><a href="#dbdb">DBDB的架构</a></li>
+        
+            <li><a href="#_5">探索设计</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="dbdb-dog-bed-database">DBDB: Dog Bed Database</h1>
+<p>作者：Taavi Burns</p>
+<p>翻译：王世德</p>
+<h2 id="_1">简介</h2>
+<p>DBDB (Dog Bed Database) 是一个用python实现的简单的键值数据库。可以将键值关联起来，并且可以将关联关系保存到磁盘上，用于后续的检索。</p>
+<p>DBDB的目标在计算机宕机或者异常时，实现数据保存。并且避免将所有数据一次保存到内存中，这样就可以保存比RAM更多的数据。</p>
+<h2 id="_2">回忆</h2>
+<p>还记得，第一次被一个bug搞得不知所措。当敲完我的一个BASIC程序运行时，诡异的像素出现在屏幕上，程序提前退出。回过头去看代码，后面的几行消失了。</p>
+<p>我妈妈的一个朋友知道如何编程，打了个电话问了一下。和她交流几分钟后，找到了问题所在：程序太大了，侵占了视频内存。清理了一下被程序截断的屏幕，出现了在内存中存储的的苹果软件BASIC的正常行为。</p>
+<p>从那刻开始，我对内粗分配都非常小心，学习了指针和使用malloc分配内存，学习了如何使用数据解决，学习非常仔细地改变内存。</p>
+<p>几年后，当我阅读面向过程的语言Erlang的时候，了解到实际上没有必要在进程间拷贝数据来发送消息，因为所有的一切都是不可变的。然后发现在Clojure中不可变数据结构，并且真正进入到了内部。</p>
+<p>在2013年，当阅读CouchDB时，了解到在变化时管理复杂数据的结构和机制。</p>
+<p>了解到可以设计一个围绕不可变数据的系统。</p>
+<p>然后打算写一本书的章节。</p>
+<p>描述CouchDB的核心数据存储概念（以我理解的那样）会很有意思。</p>
+<p>当开始尝试写一个原地改变结构的二叉树算法的时候，当越写越复杂的时候，令我非常失望。边界条件数量增加，树的一部分变化的时候可能会影响其它部分，让我非常伤心。没有任何办法解释所有的一切。</p>
+<p>记住这些教训，使用递归算法更新不可变的二叉树，这样实现变得非常直接。</p>
+<p>再一次学习到，不可变事物更容易推理。</p>
+<p>故事开始了。</p>
+<h2 id="_3">为什么很有意义</h2>
+<p>大部分项目需要某种类型的数据库。你不应该自己实现；有很多很多边界条件会折磨你，即使你仅仅将Json写入到磁盘。</p>
+<ul>
+<li>文件系统超出空间会发生什么？</li>
+<li>在保存时如果你的笔记本电池用完了，会发生什么？</li>
+<li>当数据大小超出可用内存时又会发生什么？
+  （不幸地，对于大部分现代桌面计算机和都会发生这种事情；对于移动设备和服务器web应用也会发生）</li>
+</ul>
+<p>不管怎么样，如果想_理解_数据库如何处理所有的这些问题，自己写一个是一个很好的方式。</p>
+<p>这里讨论的技术和概念可以应用到所有遇到故障之后，需要正确合理并且有可预期行为的问题上去。</p>
+<p>话说故障...</p>
+<h2 id="_4">描述故障</h2>
+<p>数据库通常以如何近似实现ACID特性为其特征：原子性、一致性、隔离性和持久性。</p>
+<p>在DBDB中更新数据具有原子性和持久性，这两个特性在后面的章节会继续描述。DBDB不提供一致性保证，因为数据存储没有约束。隔离性也没有实现。</p>
+<p>当然，应用程序可以自己实现实现的一致性保证，但合适的个隔离性需要事务管理器，这里就不尝试了，但可以在<a href="http://aosabook.org/en/500L/an-archaeology-inspired-database.html">CircleDB章节</a>中学习。</p>
+<p>还有一个系统维护的问题需要考虑，旧数据在这个实现中不再重新利用，所以重复更新（即使是相同的键）最终也会消耗磁盘空间。（后会看到为什么如此）PostgreSQL称其为回收利用（旧的空间可以重新使用），CouchDB称其为压缩（通过将数据重新写入到一个新的文件，自动将其移为就文件）。</p>
+<p>DBDB可以通过增加压缩特性实现增强，但还是将其留给读者作为练习。</p>
+<p>额外特性：你可以保证压缩树结构的平衡吗？这一特性提供性能保证。</p>
+<h2 id="dbdb">DBDB的架构</h2>
+<p>DBDB将关心的数据的物理层（数据在文件中如何保存）与数据的逻辑结构（这个例子中的二叉树）与键值存储的内容（键'a'与值'foo'的关联关系；公用API）分离开。</p>
+<p>许多数据库将逻辑层与物理方面分离，这样可以选择不同的实现方式获得不同的性能，例如，DB2的SMS（在文件系统中的文件）与DMS（原始块存储）表空间，或者MySQL的<a href="http://dev.mysql.com/doc/refman/5.7/en/storage-engines.html">可选引擎实现</a>。</p>
+<h2 id="_5">探索设计</h2>
+<p>本书的所有章节都是描述一个程序是如何从头到尾构建完成的，但这种方式并不是我们工作时与代码交互方式。大部分情况下我们需要探索别人写的代码，并且需要给出如何修改或扩展来完成不同的事情。</p>
+<p>在这一章中，假设DBDB是一个完成的项目，然后我们看下它如何工作，先来看下整个项目的结构。</p>
+<h3 id="_6">组织单元</h3>
+<p>这里列出的内容与使用者的距离排序得到，第一个模块是用户需要最先了解的，最后一个是交互最少的一个。</p>
+<ol>
+<li><code>tool.py</code>： 定义了一个命令行工具来研究数据库。</li>
+<li><code>interface.py</code>： 定义了一个类<code>DBDB</code>，其使用<code>二叉树</code>实现了python字典API，这是在python程序中使用DBDB的方式。</li>
+<li><code>logical.py</code>： 定义了逻辑层，键值存储的抽象接口。<ul>
+<li><code>LogicalBase</code>：提供了逻辑更新的API（像get，set和commit），具体的类实现自身的更新，并且管理存储锁定和去引用内部节点。</li>
+<li><code>ValueRef</code>：是一个python对象用于引用数据库中保存的二进制blob，这种方式可以避免将所有数据一次全部存储到内存中。</li>
+</ul>
+</li>
+<li><code>binary_tree.py</code>： 定义一个逻辑接口下具体的二叉树算法。<ul>
+<li><code>BinaryTree</code>： 给出二叉树具体的实现，并且有查找、插入、删除键值对的方法。<code>BinaryTree</code>代表不可变树；更新操作通过返回一个与旧树共享相同结构的新树实现。</li>
+<li><code>BinaryNode</code>： 实现了二叉树的节点。</li>
+<li><code>BinaryNodeRef</code>： 是一个具体的<code>ValueRef</code>，其实现了序列化和反序列化一个<code>BinaryNode</code>。</li>
+</ul>
+</li>
+<li><code>physical.py</code>： 定义了一个物理层，<code>Storage</code>类提供了持久性，（大部分情况）append-only记录存储。</li>
+</ol>
+<p>这些模块都是一个类仅完成一个功能。换句话说，每个类应该仅有个原因来改变。</p>
+<h3 id="_7">读一个值</h3>
+<p>这里我们以最简单的例子开始：从数据库中读取一个值。</p>
+<p>当尝试从<code>example.db</code>中关联的键<code>foo</code>获取值的时候会发生什么呢？</p>
+<pre><code class="bash">$ python -m dbdb.tool example.db get foo
+</code></pre>
+
+<p>这会运行模块<code>dbdb.tool</code>中的<code>main()</code>函数：</p>
+<pre><code class="python"># dbdb/tool.py
+def main(argv):
+    if not (4 &lt;= len(argv) &lt;= 5):
+        usage()
+        return BAD_ARGS
+    dbname, verb, key, value = (argv[1:] + [None])[:4]
+    if verb not in {'get', 'set', 'delete'}:
+        usage()
+        return BAD_VERB
+    db = dbdb.connect(dbname)          # CONNECT
+    try:
+        if verb == 'get':
+            sys.stdout.write(db[key])  # GET VALUE
+        elif verb == 'set':
+            db[key] = value
+            db.commit()
+        else:
+            del db[key]
+            db.commit()
+    except KeyError:
+        print(&quot;Key not found&quot;, file=sys.stderr)
+        return BAD_KEY
+    return OK
+</code></pre>
+
+<p><code>connect()</code>函数打开数据文件（也可能是创建，但永远不会覆盖）返回<code>DBDB</code>的实例：</p>
+<pre><code class="python"># dbdb/__init__.py
+def connect(dbname):
+    try:
+        f = open(dbname, 'r+b')
+    except IOError:
+        fd = os.open(dbname, os.O_RDWR | os.O_CREAT)
+        f = os.fdopen(fd, 'r+b')
+    return DBDB(f)
+</code></pre>
+
+<pre><code class="python"># dbdb/interface.py
+class DBDB(object):
+
+    def __init__(self, f):
+        self._storage = Storage(f)
+        self._tree = BinaryTree(self._storage)
+</code></pre>
+
+<p>可以看到<code>DBDB</code>有一个<code>Storage</code>的实例引用，但其还共享了一个<code>self._tree</code>的引用。为什么呢？<code>self._tree</code>不能够完全管理访问自己的存储吗？</p>
+<p>那个对象"拥有"一个资源通常是一个非常重要的设计考虑点，因为其会给出提示：对于什么类型的变化会不安全。我们急着这个问题，然后继续。</p>
+<p>一旦有了一个DBDB实例，可以通过字典(<code>db[key]</code>)查找<code>key</code>的值，python解释器调用<code>DBDB.__getitem__()</code>。</p>
+<pre><code class="python">class DBDB(object):
+# ...
+    def __getitem__(self, key):
+        self._assert_not_closed()
+        return self._tree.get(key)
+
+    def _assert_not_closed(self):
+        if self._storage.closed:
+            raise ValueError('Database closed.')
+</code></pre>
+
+<p><code>__getitem__()</code>通过调用<code>_assert_not_closed_</code>来保证数据库仍然是打开的。啊哈！这里我们看到了至少一个原因为什么<code>DBDB</code>需要直接访问我们的<code>Storage</code>实例：它可以实现预置条件。（你是否赞成这个设计呢？你可以想到其它的方式来实现吗？）</p>
+<p>DBDB通过<code>key</code>在内部<code>_tree</code>检索值通过调用<code>_tree.get()</code>，其提供了<code>LogicalBase</code>：</p>
+<pre><code class="python"># dbdb/logical.py
+class LogicalBase(object):
+# ...
+    def get(self, key):
+        if not self._storage.locked:
+            self._refresh_tree_ref()
+        return self._get(self._follow(self._tree_ref), key)
+</code></pre>
+
+<p><code>get()</code>检查是否将存储锁定了，我们不是100%确定为什么这里需要锁，但可以猜测这里是为了允许写者来序列化访问数据。如果存储没有被锁定，会发生什么呢？</p>
+<pre><code class="python"># dbdb/logical.py
+class LogicalBase(object):
+# ...
+def _refresh_tree_ref(self):
+        self._tree_ref = self.node_ref_class(
+            address=self._storage.get_root_address())
+</code></pre>
+
+<p><code>_refresh_tree_ref</code>重置当前在磁盘上的树数据视图，允许执行完全更新的读请求。</p>
+<p>当存储是锁定的时候，执行读操作，会发生什么呢？这意味着其它进程正在更改请求的数据，我们读到的数据可能不是最新的，这通常称之为“脏数据”，这种模式允许读者访问数据，但不用担心阻塞问题，但代价是可能读到过期的数据。</p>
+<p>到这里，我们看下实际上如何检索数据：</p>
+<pre><code class="python"># dbdb/binary_tree.py
+class BinaryTree(LogicalBase):
+# ...
+    def _get(self, node, key):
+        while node is not None:
+            if key &lt; node.key:
+                node = self._follow(node.left_ref)
+            elif node.key &lt; key:
+                node = self._follow(node.right_ref)
+            else:
+                return self._follow(node.value_ref)
+        raise KeyError
+</code></pre>
+
+<p>这是一个标准二叉树查找，后面引用其节点，阅读<code>BinaryTree</code>文档可以知道<code>Node</code>和<code>NodeRef</code>都是值对象：都是不可变的，其内容永远不会变化。</p>
+<p><code>Node</code>用一个关联的键值对来创建，这种关联也永远不会改变。整个<code>BinaryTree</code>的内容只有在根节点被替换的时候才是可见的，这意味着，当我们进行检索的时候，不用担心树的内容变化。</p>
+<p>一旦关联的值被找到，会被<code>main()</code>函数写入到标准输出流中。</p>
+<h4 id="_8">插入和更新</h4></div>
+        </div>
+
+	<footer class="col-md-12">
+		<hr>
+		
+		<p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+	</footer>
+
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>
