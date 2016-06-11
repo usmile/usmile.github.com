@@ -2,23 +2,23 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "text": "Welcome to my blog\n\n\n\u6587\u7ae0\n\n\n\n\ngit command\n\n\npython notes\n\n\n\n\n\u7ffb\u8bd1\n\n\n\n\ndatastore\n: a 500lines' article \n\n\nzookeeper\n: zookeeper\u8bba\u6587\u7ffb\u8bd1",
             "title": "\u9996\u9875"
         },
         {
-            "location": "/#welcome-to-mkdocs",
-            "text": "For full documentation visit  mkdocs.org .",
-            "title": "Welcome to MkDocs"
+            "location": "/#welcome-to-my-blog",
+            "text": "",
+            "title": "Welcome to my blog"
         },
         {
-            "location": "/#commands",
-            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
-            "title": "Commands"
+            "location": "/#_1",
+            "text": "git command  python notes",
+            "title": "\u6587\u7ae0"
         },
         {
-            "location": "/#project-layout",
-            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
-            "title": "Project layout"
+            "location": "/#_2",
+            "text": "datastore : a 500lines' article   zookeeper : zookeeper\u8bba\u6587\u7ffb\u8bd1",
+            "title": "\u7ffb\u8bd1"
         },
         {
             "location": "/notes/git_commands/",
