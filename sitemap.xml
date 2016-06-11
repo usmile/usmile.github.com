@@ -18,7 +18,25 @@
     </url>
         
     <url>
+     <loc>None/notes/mkdocs_usage/</loc>
+     <lastmod>2016-06-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>None/notes/python_notes/</loc>
+     <lastmod>2016-06-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/notes/readme/</loc>
+     <lastmod>2016-06-11</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/notes/vm_network/</loc>
      <lastmod>2016-06-11</lastmod>
      <changefreq>daily</changefreq>
     </url>
