@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+   <script id="dsq-count-scr" src="//wangsd.disqus.com/count.js" async></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Git - 博客</title>
+
+        <link href="../../css/bootstrap-3.0.3.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">博客</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">首页</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../articles/readme/">文章</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../life/readme/">生活</a>
+                </li>
+            
+            
+            
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">笔记 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../bash/">Bash</a>
+                        </li>
+                    
+                        <li class="active">
+                            <a href="./">Git</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../python/">Python</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../vmware/">Vmware</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">翻译 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        <li >
+                            <a href="../../translate/datastore/">Datastore</a>
+                        </li>
+                    
+                        <li >
+                            <a href="../../translate/zookeeper/">Zookeeper</a>
+                        </li>
+                    
+                    </ul>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../about/">关于</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../bash/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../python/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <!-- <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#_1">第一章 入门介绍</a></li>
+        
+            <li><a href="#11">1.1 基本命令</a></li>
+        
+            <li><a href="#12">1.2 工作区</a></li>
+        
+    
+        <li class="main "><a href="#_2">第二章 远程仓库</a></li>
+        
+            <li><a href="#21-github">2.1 创建一个库推送到github</a></li>
+        
+            <li><a href="#22">2.2 克隆一个远程仓库</a></li>
+        
+    
+        <li class="main "><a href="#_3">第三章 分支管理</a></li>
+        
+            <li><a href="#31">3.1 创建于合并分支</a></li>
+        
+            <li><a href="#32">3.2 冲突管理</a></li>
+        
+    
+        <li class="main "><a href="#_4">第四章 搭建服务</a></li>
+        
+    
+    </ul>
+</div></div> -->
+            <div class="col-md-9" role="main">
+
+<h1 id="_1">第一章 入门介绍</h1>
+<blockquote>
+<p><a href="../res/github-git-cheat-sheet.pdf">git cheat sheet(pdf)</a></p>
+</blockquote>
+<h2 id="11">1.1 基本命令</h2>
+<pre><code class="bash">mkdir notes
+cd notes
+
+# 初始化一个git仓库 
+git init
+
+echo &quot;my notes&quot; &gt; readme.md
+
+# 查看状态
+git status
+# 查看修改内容
+git diff readme.md
+
+# 添加文件到仓库
+git add readme.md
+# 提交更改
+git commit -m &quot;add readme&quot;
+
+# 查看提交日志
+git log --pretty=oneline
+
+# 回退到上一个版本
+git reset --hard HEAD^
+HEAD: 当前版本
+HEAD^: 上一个版本
+HEAD~100: 前一百个版本
+58a65b: 指定版本
+
+# 查看命令历史
+git reflogs
+</code></pre>
+
+<h2 id="12">1.2 工作区</h2>
+<p>工作区 -add-&gt; 暂存区 -commit-&gt; 分支</p>
+<pre><code class="bash"># 查看工作区与暂存区文件的差异
+git diff readme.md
+
+# 查看工作区和版本库最新版本的差异
+git diff HEAD -- readme.md
+
+# 放弃工作区的修改
+git checkout -- readme.md
+
+# 撤销暂存区
+git reset HEAD readme.md
+</code></pre>
+
+<h1 id="_2">第二章 远程仓库</h1>
+<h2 id="21-github">2.1 创建一个库推送到github</h2>
+<p>在github上创建一个仓库 gitlearn</p>
+<p>在本地创建一个gitlearn目录，并进入</p>
+<pre><code>mkdir gitlearn
+cd gitlearn
+</code></pre>
+<p>使用命令git init初始化一个库</p>
+<pre><code>git init
+</code></pre>
+<p>然后使用如下命令添加远程库 origin</p>
+<pre><code>git remote add origin git@github.com:usmile/gitlearn.git
+</code></pre>
+<p>生成一个readme.md文件</p>
+<pre><code>echo "git learn is very easy!" &gt; readme.md
+</code></pre>
+<p>添加文件到仓库</p>
+<pre><code>git add readme.md
+</code></pre>
+<p>提交更改</p>
+<pre><code>git commit -m "add readme file"
+</code></pre>
+<p>执行向远程仓库origin master分支推送更新</p>
+<pre><code>git push -u origin master
+</code></pre>
+<h2 id="22">2.2 克隆一个远程仓库</h2>
+<p>在github上创建一个仓库 gitlearn</p>
+<p>从github上克隆仓库</p>
+<pre><code>git clone git@github.com:usmile/gitlearn.git
+</code></pre>
+<h1 id="_3">第三章 分支管理</h1>
+<h2 id="31">3.1 创建于合并分支</h2>
+<pre><code class="bash"># 创建分支
+git branch dev
+# 切换分支
+git checkout dev
+
+# 创建并切换分支
+git checkout -b dev
+
+# 查看分支, 带有*的分支为当前分支
+git branch
+
+# 切换到master分支
+git checkout master
+# 合并指定分支到当前分支
+git merge dev 
+
+# 删除分支
+git branch -d dev
+</code></pre>
+
+<h2 id="32">3.2 冲突管理</h2>
+<p>在master分支上修改readme.md，新增一行内容。提交修改。
+在dev分支上修改readme.md，也新增一行内容。提交修改。</p>
+<p>然后切换到master分支，将dev分支的内容合并。</p>
+<pre><code>git merge dev
+</code></pre>
+<p>会有冲突提醒。打开 readme.md:</p>
+<pre><code class="bash"> &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Creating a new branch is quick &amp; simple.
+=======
+Creating a new branch is quick AND simple.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1
+</code></pre>
+
+<p>然后修改内容。再次提交。</p>
+<pre><code class="bash"># 查看分支合并情况
+git log --graph  --pretty=oneline --abbrev-commit
+</code></pre>
+
+<pre><code class="bash"># 工作现场“储藏”
+git stash
+
+# 查看储藏的你内容
+git stash list
+
+# 恢复储藏的内容
+git stash apply stash@{0}
+
+# 删除储藏的内容
+git stash drop
+
+# 恢复储藏的内容，并删除
+git stash pop
+</code></pre>
+
+<h1 id="_4">第四章 搭建服务</h1>
+<pre><code class="bash">(server)
+# 创建一个用户git来运行git服务
+adduser git
+
+# 创建一个裸仓库(sample.git 所在目录/root/git/)
+git init --bare sample.git
+
+# 改变用户
+sudo chown -R git:git sample.git
+
+# 添加客户端的公钥到/root/.ssh/authorized_keys
+
+(client)
+# 克隆sample.git
+git clone git@192.168.137.200:/root/git/sample.git
+
+# 增加readme.md
+echo &quot;my first server sample&quot; &gt; readme.md
+git add readme.md
+git command &quot;my first server sample&quot;
+git push
+</code></pre></div>
+
+
+           <!-- begin: 评论 -->
+           <div id="disqus_thread"></div>
+           <script>
+               (function() { // DON'T EDIT BELOW THIS LINE
+               var d = document, s = d.createElement('script');
+
+               s.src = '//wangsd.disqus.com/embed.js';
+
+               s.setAttribute('data-timestamp', +new Date());
+               (d.head || d.body).appendChild(s);
+               })();
+           </script>
+           <noscript>
+               Please enable JavaScript to view the 
+               <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+           </noscript>
+           <!-- end: 评论 -->
+
+        </div>
+
+
+
+	<footer class="col-md-12">
+		<hr>
+		
+		<!-- <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p> -->
+	</footer>
+
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+    </body>
+</html>

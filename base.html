@@ -47,21 +47,28 @@
         <div class="container">
             <!-- <div class="col-md-3">{% include "toc.html" %}</div> -->
             <div class="col-md-9" role="main">{% include "content.html" %}</div>
+
+
+           <!-- begin: 评论 -->
+           <div id="disqus_thread"></div>
+           <script>
+               (function() { // DON'T EDIT BELOW THIS LINE
+               var d = document, s = d.createElement('script');
+
+               s.src = '//wangsd.disqus.com/embed.js';
+
+               s.setAttribute('data-timestamp', +new Date());
+               (d.head || d.body).appendChild(s);
+               })();
+           </script>
+           <noscript>
+               Please enable JavaScript to view the 
+               <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+           </noscript>
+           <!-- end: 评论 -->
+
         </div>
 
-
-<div id="disqus_thread"></div>
-<script>
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-
-s.src = '//wangsd.disqus.com/embed.js';
-
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 
 	<footer class="col-md-12">

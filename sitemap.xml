@@ -4,7 +4,23 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2016-06-17</lastmod>
+     <lastmod>2016-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/articles/readme/</loc>
+     <lastmod>2016-06-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/life/readme/</loc>
+     <lastmod>2016-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,26 +28,26 @@
     
         
     <url>
-     <loc>None/notes/git_commands/</loc>
-     <lastmod>2016-06-17</lastmod>
+     <loc>None/notes/bash/</loc>
+     <lastmod>2016-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/notes/python_notes/</loc>
-     <lastmod>2016-06-17</lastmod>
+     <loc>None/notes/git/</loc>
+     <lastmod>2016-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/notes/readme/</loc>
-     <lastmod>2016-06-17</lastmod>
+     <loc>None/notes/python/</loc>
+     <lastmod>2016-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/notes/vm_network/</loc>
-     <lastmod>2016-06-17</lastmod>
+     <loc>None/notes/vmware/</loc>
+     <lastmod>2016-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -41,13 +57,13 @@
         
     <url>
      <loc>None/translate/datastore/</loc>
-     <lastmod>2016-06-17</lastmod>
+     <lastmod>2016-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/translate/zookeeper_paper/</loc>
-     <lastmod>2016-06-17</lastmod>
+     <loc>None/translate/zookeeper/</loc>
+     <lastmod>2016-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -56,7 +72,7 @@
     
     <url>
      <loc>None/about/</loc>
-     <lastmod>2016-06-17</lastmod>
+     <lastmod>2016-06-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
